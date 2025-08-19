@@ -107,6 +107,7 @@ public class IRSController : MonoBehaviour
 
     #region ***Reward Event***
 
+
     //void RewardedOnAdRewardedEvent(LevelPlayAdInfo info, LevelPlayReward reward)
     //{
     //    if (finishReward != null)

@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
+using Ultility;
 //using Unity.Burst.CompilerServices;
 
 namespace DVAH
@@ -73,7 +72,7 @@ namespace DVAH
             {
 #if UNITY_ANDROID
                 OpenUrl();
-                PlayerPrefs.SetInt(CONSTANT.RATE_CHECK, 1);
+                PlayerPrefs.SetInt(common.RATE_CHECK, 1);
 #elif UNITY_EDITOR
             this.gameObject.SetActive(false);
 #endif

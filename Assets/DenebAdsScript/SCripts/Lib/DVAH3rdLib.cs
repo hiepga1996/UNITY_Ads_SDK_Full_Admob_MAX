@@ -11,16 +11,10 @@ namespace DVAH
 {
     public class DVAH3rdLib : Singleton<DVAH3rdLib>
     {
-        [SerializeField] bool _isShowDebug = false, _isDontDestroyOnLoad = false;
-        [SerializeField] GameObject _notiDebug, _noInternetDebug;
+        [SerializeField] bool _isDontDestroyOnLoad = false;
+        [SerializeField] GameObject _noInternetDebug;
         MasterLib _masterLib;
         int _devTapCount = 0;
-
-        [Header("------------POPUP-------------")]
-        [SerializeField] GameObject _popupRate;
-        [SerializeField] GameObject _popupForceUpdate;
-        [SerializeField] Button _forceUpdateBlackPanel, _forceUpdateNo;
-
 
         [Header("------------LIB-------------")]
         [SerializeField]
@@ -33,8 +27,6 @@ namespace DVAH
         [SerializeField] List<GameObject> _childLibs;
         public List<GameObject> ChildLibs => _childLibs;
 
-
-        // Start is called before the first frame update
         void Start()
         {
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -42,86 +34,18 @@ namespace DVAH
             if (_isDontDestroyOnLoad)
                 DontDestroyOnLoad(this.gameObject);
 
-            _= FireBaseManager.Instant.GetValueRemoteAsync(CONSTANT.FORCE_UPDATE, (value) =>
-            {
-                try
-                {
-                    var data = JSON.Parse(value.StringValue);
-                    if (!Application.version.Equals(data["version"]))
-                    {
-                        _popupForceUpdate.SetActive(true);
-                    }
-
-                    if (data["force"].AsBool)
-                    {
-                        _forceUpdateNo.onClick.AddListener(() =>
-                        {
-                            CloseApplication();
-                        });
-                        _forceUpdateBlackPanel.onClick.AddListener(() =>
-                        {
-                            CloseApplication();
-                        });
-
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError("===>Error on set forceupdate popup!<==== "+e.ToString());
-                }
-
-            });
-
 #if UNITY_EDITOR
             this.CheckFirebaseJS();
             this.CheckFirebaseXml();
 #endif
         }
 
-        // Update is called once per frame
         void Update()
         {
             //if (_noInternetDebug)
             //{
             //    _noInternetDebug.SetActive(!AdManager.Instant.CheckInternetConnection());
-            //}  
-
-
-            if (!_isShowDebug || _notiDebug == null)
-                return;
-            if (Input.touchCount < 3)
-            {
-                if (_devTapCount != 0)
-                    _devTapCount = 0;
-                return;
-            }
-
-            if (Screen.width - Vector2.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position) > Screen.width / 4)
-            {
-                return;
-            }
-
-            if (Screen.height - Vector2.Distance(Input.GetTouch(2).position, Input.GetTouch(1).position) > Screen.height / 4)
-            {
-                return;
-            }
-
-            if (Input.touchCount == 4 && Input.GetTouch(3).phase == TouchPhase.Ended)
-                _devTapCount++;
-
-            if (_devTapCount < 5)
-                return;
-
-            if (!_notiDebug.activeSelf)
-                _notiDebug.SetActive(true);
-        }
-
-        public void ShowPopUpRate(bool isShow = true)
-        {
-            if (isShow && PlayerPrefs.HasKey(CONSTANT.RATE_CHECK))
-                return;
-            _popupRate.SetActive(isShow);
+            //}
         }
 
         public void GotoMarket()
@@ -143,14 +67,6 @@ namespace DVAH
                 _masterLib = this.GetComponentInChildren<MasterLib>();
 
             //CheckFirebaseJS();
-
-            if (_notiDebug == null && this.transform.GetChild(0).GetComponent<NotiManager>() != null)
-            {
-                _notiDebug = this.transform.GetChild(0).gameObject;
-            }
-            _notiDebug.SetActive(_isShowDebug);
-
-             
         }
 
         public void GetSubLib()

@@ -171,10 +171,6 @@ public class Advertisements : MonoBehaviour
     private void PrintStatus(string message)
     {
         Debug.Log(message);
-        //MessageBox.instance.showMessage(message);
-        //MobileAdsEventExecutor.ExecuteInUpdate(() =>
-        //{
-        //});
     }
 
     #region Banner
@@ -737,8 +733,8 @@ public class Advertisements : MonoBehaviour
     int countNativeTexture = 0;
 
     bool nativeAdsReady = false;
-    public List<GameObject> _native_object_list;
-    public List<NativeAd> _nativead_list = new List<NativeAd>();
+    List<GameObject> _native_object_list;
+    List<NativeAd> _nativead_list = new List<NativeAd>();
 
     private void RequestNativeAd()
     {

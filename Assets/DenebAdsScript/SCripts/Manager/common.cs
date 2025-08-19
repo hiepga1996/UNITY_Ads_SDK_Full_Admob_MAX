@@ -7,33 +7,13 @@ namespace Ultility
     {
         /*----data key save----------------------------------------------------------------------------------------------------*/
 
-        public static string GameKey = "Fruity_crush_";
+        public static string GameKey = "UNNITY_SDK_2025";
         public static string REMOVE_ADS_KEY = GameKey + "REMOVE_ADS_KEY";
-
-
-        public static string SaveDayReceiveSub = GameKey + "save_day_receive_sub";
-        public static string SaveTimeEndDaylyVip = GameKey + "SaveTimeEndDaylyVip";
-
-        public static string SaveTimeStartThreeDayVip = GameKey + "SaveTimeStartThreeDayVip";
-        public static string SaveTimeEndThreeDayVip = GameKey + "SaveTimeEndThreeDayVip";
-
-        public static string SaveTimeStartSevenDayVip = GameKey + "SaveTimeStartSevenDayVip";
-        public static string SaveTimeEndSevenDayVip = GameKey + "SaveTimeEndSevenDayVip";
-
-        public static string SaveTimeStartThirtyDayVip = GameKey + "SaveTimeStartThirtyDayVip";
-        public static string SaveTimeEndThirtyDayVip = GameKey + "SaveTimeEndThirtyDayVip";
-
-        public static string SaveLevelNotAds = GameKey + "SaveLevelNotAds";
-        public static string SaveTicketSpinDayly = GameKey + "SaveTicketSpinDayly";
-
-        public static string SaveNumberTurnMoreDay = GameKey + "SaveNumberTurnMoreDay";
-        public static string SaveNumberTurnMoreThree = GameKey + "SaveNumberTurnMoreThree";
-        public static string SaveNumberTurnMoreSeven = GameKey + "SaveNumberTurnMoreSeven";
-        public static string SaveNumberTurnMoreThirty = GameKey + "SaveNumberTurnMoreThirty";
 
         public static bool isDailyRewardClaimed = false;
         public static bool loadLevelConfigDone = false;
         public static bool loadScoreConfigDone = false;
+        public static string RATE_CHECK = "RATE";
 
         public static bool isStartGame = false;
 
@@ -164,24 +144,6 @@ namespace Ultility
         public static int AOA_show_level = 6;
         public static int mrec_show_level = 21;
 
-        #endregion
-
-        #region IAP
-        public static string Coin1 = "coin1";
-        public static string Coin2 = "coin2";
-        public static string Coin3 = "coin3";
-        public static string Coin4 = "coin4";
-        public static string Coin5 = "coin5";
-        public static string Removeads = "removeads";
-        public static string DaylyVip = "daylyvip";
-        public static string ThreeDayVip = "threedayvip";
-        public static string SevenDayVip = "sevenDayVip";
-        public static string ThirtyDayVip = "thirtydayvip";
-        public static string CoinAndItem1 = "coin_item_1";
-        public static string CoinAndItem2 = "coin_item_2";
-        public static string CoinAndItem3 = "coin_item_3";
-        public static string CoinAndItem4 = "coin_item_4";
-        public static string CoinAndItem5 = "coin_item_5";
         #endregion
 
         public static string FormatMoney(float value)
